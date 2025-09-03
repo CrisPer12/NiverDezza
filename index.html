@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Jogo Para Meu Amor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="game-wrapper">
+        <div id="start-screen" class="game-card">
+            <div class="card-content">
+                <img src="foto1.jpg" alt="Foto de vocês" class="intro-photo">
+                <h1>Princesa Dezza,</h1>
+                <h2>Bem-vinda ao Jogo do Nosso Amor!</h2>
+                <p>Preparei 6 perguntas sobre nossa história. Cada acerto vale <strong>R$ 50,00</strong>. Mas cuidado com a última pergunta... ela é especial!</p>
+                <p>Pronta para começar?</p>
+                <button onclick="startGame()">Começar a Jornada</button>
+            </div>
+        </div>
+
+        <div id="question-screen" class="game-card hidden">
+            <div class="question-header">
+                <span id="question-number">Pergunta X de 6</span>
+                <div class="prize-display">
+                    Prêmio: R$ <span id="prize-amount">0</span>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+            <div class="card-content">
+                <h2 id="question-text"></h2>
+                <div id="answers-container">
+                    </div>
+            </div>
+        </div>
+
+        <div id="game-over-screen" class="game-card hidden">
+            <div class="card-content">
+                <div class="game-over-icon">💔</div>
+                <h1>Fim de Jogo...</h1>
+                <p>Ah, não, Princesa... por tão pouco! A pergunta final não foi respondida corretamente.</p>
+                <div class="final-prize-display lost">
+                    <span>Tesouro Perdido</span>
+                    <strong>R$ 300,00</strong>
+                </div>
+            </div>
+        </div>
+
+        <div id="reveal-screen" class="game-card hidden">
+            <canvas id="confetti-canvas"></canvas>
+            <div class="card-content">
+                <span id="reveal-subtitle"></span>
+                <h1 id="reveal-title"></h1>
+                <img src="foto2.jpg" alt="Foto de vocês celebrando" class="reveal-photo">
+                <p id="reveal-message"></p>
+                <div class="final-prize-display">
+                    <span>Prêmio Final</span>
+                    <strong>R$ 300,00</strong>
+                </div>
+                <button onclick="showFinalSurprise()">E ainda não acabou...</button>
+            </div>
+        </div>
+        
+        <div id="final-surprise-screen" class="game-card hidden">
+            <div class="card-content">
+                <div class="surprise-icon">🍕</div>
+                <h2>As comemorações so estão começando...</h2>
+                <p>O prêmio em dinheiro era só o começo da celebração. Esteja pronta às <strong>18:00h</strong> para sairmos.</p>
+                <p class="hint">Uma dica sobre nosso destino: Nao tem dica nao kkk.</p>
+                <button onclick="showBirthdayMessage()">Uma última mensagem para você...</button>
+            </div>
+        </div>
+
+        <div id="birthday-screen" class="game-card hidden">
+            <div class="card-content">
+                <div class="surprise-icon">🎁</div>
+                <h2>Feliz Aniversário, meu amor!</h2>
+                <p class="birthday-message">
+                    Hoje, o jogo era apenas uma desculpa para te lembrar que celebrar você é a minha coisa favorita no mundo. Cada novo ano da sua vida é o maior presente que eu poderia receber.
+                    <br><br>
+                    <strong>[Conte uma pequena memória especial do último ano de vocês aqui. Ex: "Lembro daquele dia na praia, quando..."]</strong>
+                    <br><br>
+                    Que o seu novo ciclo seja tão brilhante, lindo e cheio de amor quanto você é. Eu sou incrivelmente sortudo por estar ao seu lado.
+                    <br><br>
+                    <strong>[Diga o que você mais ama nela ou um desejo para o futuro dela. Ex: "Eu te amo pelo seu jeito... e mal posso esperar por todas as nossas próximas aventuras."]</strong>
+                </p>
+                <p class="final-love-message">Agora chega de telas, vem me dar um abraço!<br>- Com todo o amor do mundo, [SEU NOME AQUI]</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="feedback-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span id="modal-icon"></span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

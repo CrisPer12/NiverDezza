@@ -1,0 +1,266 @@
+:root {
+    /* NOVA PALETA DE CORES - "OCEANO E OURO" */
+    --bg-color: #11222b; /* Azul-petróleo super escuro */
+    --card-bg: rgba(22, 53, 67, 0.6); /* Fundo do card azulado e transparente */
+    --primary-color: #2dd4bf; /* Verde-água / Ciano vibrante como cor principal */
+    --secondary-color: #f3ca40; /* Dourado como cor de acento */
+    --text-color: #edf2f4; /* Branco-gelo para textos principais */
+    --text-muted: #b0c4de; /* Azul-claro acinzentado para textos de apoio */
+    --success-color: #4ade80;
+    --danger-color: #f75c7b;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    background-image: linear-gradient(rgba(17, 34, 43, 0.9), rgba(17, 34, 43, 0.95)), url('foto1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.game-wrapper {
+    width: 100%;
+    max-width: 500px;
+}
+
+.game-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 35px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none; }
+
+h1, h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+}
+
+h1 { font-size: 2.2em; margin-bottom: 10px; }
+h2 { font-size: 1.5em; margin-bottom: 15px; color: var(--text-color); }
+p { color: var(--text-muted); line-height: 1.6; font-size: 0.95em; }
+
+.intro-photo, .reveal-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    margin-bottom: 20px;
+    box-shadow: 0 0 25px rgba(45, 212, 191, 0.4); /* Sombra no tom de verde-água */
+}
+
+button {
+    background-image: linear-gradient(45deg, var(--primary-color), #21a194); /* Gradiente de verde-água */
+    color: #11222b; /* Texto escuro para melhor contraste com o botão claro */
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
+
+/* --- Tela de Perguntas --- */
+.question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.prize-display { background: rgba(0,0,0,0.2); padding: 5px 15px; border-radius: 20px; font-weight: 600; }
+#prize-amount { color: var(--secondary-color); font-weight: bold; }
+#question-number { font-weight: 300; color: var(--text-muted); }
+.progress-bar-container { width: 100%; background: rgba(0,0,0,0.2); border-radius: 10px; height: 10px; margin-bottom: 25px; }
+#progress-bar { width: 0%; height: 100%; background-color: var(--secondary-color); border-radius: 10px; transition: width 0.5s ease; }
+
+#answers-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+.answer-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    text-align: left;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.answer-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--primary-color); }
+.answer-btn.correct { background: var(--success-color); border-color: var(--success-color); color: white; font-weight: bold; }
+.answer-btn.wrong { background: var(--danger-color); border-color: var(--danger-color); color: white; font-weight: bold; }
+.answer-btn.disabled { pointer-events: none; }
+
+/* Estilo para a pergunta de Risco Total */
+.game-card.high-stakes {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 30px rgba(247, 92, 123, 0.5);
+}
+.game-card.high-stakes h2 {
+    color: var(--danger-color);
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* --- Telas Finais --- */
+#confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.final-prize-display {
+    background: linear-gradient(45deg, var(--secondary-color), #ffdf70);
+    color: #3d2f00;
+    padding: 15px 25px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 20px;
+}
+.final-prize-display span { display: block; font-size: 0.9em; }
+.final-prize-display strong { font-size: 2.5em; font-weight: 700; }
+
+.surprise-icon { font-size: 4em; margin-bottom: 10px; }
+.hint { background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; font-style: italic; }
+.final-love-message { margin-top: 30px; font-weight: 600; color: var(--primary-color); }
+
+/* --- Estilos para a Tela de Game Over (Suspense) --- */
+#game-over-screen {
+    animation: fadeIn 0.5s ease-in-out, shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.game-over-icon {
+    font-size: 4em;
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+#game-over-screen h1 {
+    color: var(--danger-color);
+}
+
+.final-prize-display.lost {
+    background: linear-gradient(45deg, #555, #333);
+    color: #999;
+    text-decoration: line-through;
+}
+
+/* --- Estilos para a Tela de Aniversário --- */
+.birthday-message {
+    text-align: left;
+    background: rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1em;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.birthday-message strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* --- ESTILOS DO NOVO POP-UP DE FEEDBACK --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: var(--bg-color);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 40px rgba(45, 212, 191, 0.3); /* Sombra no tom de verde-água */
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.hidden .modal-content {
+    transform: scale(0.7);
+}
+
+
+#modal-icon {
+    font-size: 3.5em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+#modal-title {
+    font-family: var(--font-heading);
+    margin: 0;
+    font-size: 2em;
+}
+
+#modal-message {
+    font-size: 1em;
+    color: var(--text-muted);
+}
+
+.modal-content.correct-feedback {
+    border-color: var(--success-color);
+    box-shadow: 0 0 40px rgba(74, 222, 128, 0.3);
+}
+
+.modal-content.correct-feedback #modal-title {
+    color: var(--success-color);
+}
+
+.modal-content.incorrect-feedback {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 40px rgba(247, 92, 123, 0.3);
+    animation: shake 0.5s;
+}
+
+.modal-content.incorrect-feedback #modal-title {
+    color: var(--danger-color);
+}
