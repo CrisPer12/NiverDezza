@@ -10,11 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <button id="music-toggle" class="music-button">🔇</button>
     
     <div class="game-wrapper">
         <div id="start-screen" class="game-card">
             <div class="card-content">
-                <img src="foto1.jpg" alt="Foto de vocês" class="intro-photo">
+                <img src="https://raw.githubusercontent.com/CrisPer12/NiverDezza/refs/heads/main/foto1.JPG" alt="Foto de vocês" class="intro-photo">
                 <h1>Princesa Dezza,</h1>
                 <h2>Bem-vinda ao Jogo do Nosso Amor!</h2>
                 <p>Preparei 6 perguntas sobre nossa história. Cada acerto vale <strong>R$ 50,00</strong>. Mas cuidado com a última pergunta... ela é especial!</p>
@@ -57,7 +59,7 @@
             <div class="card-content">
                 <span id="reveal-subtitle"></span>
                 <h1 id="reveal-title"></h1>
-                <img src="foto2.jpg" alt="Foto de vocês celebrando" class="reveal-photo">
+                <img src="https://raw.githubusercontent.com/CrisPer12/NiverDezza/refs/heads/main/foto2.jpg" alt="Foto de vocês celebrando" class="reveal-photo">
                 <p id="reveal-message"></p>
                 <div class="final-prize-display">
                     <span>Prêmio Final</span>
@@ -80,17 +82,17 @@
         <div id="birthday-screen" class="game-card hidden">
             <div class="card-content">
                 <div class="surprise-icon">🎁</div>
-                <h2>Feliz Aniversário, meu amor!</h2>
+                <h2>Feliz Aniversário, minha Princesa Aventureira!</h2>
                 <p class="birthday-message">
                     Hoje, o jogo era apenas uma desculpa para te lembrar que celebrar você é a minha coisa favorita no mundo. Cada novo ano da sua vida é o maior presente que eu poderia receber.
                     <br><br>
-                    <strong>[Conte uma pequena memória especial do último ano de vocês aqui. Ex: "Lembro daquele dia na praia, quando..."]</strong>
+                    <strong>Essa data marca um dia especial e mesmo que indiretamente foi um dos dias mais importantes da minha vida! O dia que a mulher da minha vida veio ao mundo!</strong>
                     <br><br>
                     Que o seu novo ciclo seja tão brilhante, lindo e cheio de amor quanto você é. Eu sou incrivelmente sortudo por estar ao seu lado.
                     <br><br>
-                    <strong>[Diga o que você mais ama nela ou um desejo para o futuro dela. Ex: "Eu te amo pelo seu jeito... e mal posso esperar por todas as nossas próximas aventuras."]</strong>
+                    <strong>Amo muito seu jeito de enfrentar os seus problemas e mostrar força, superar os desafios, que sabemos que são muitos, mas você é guerreira e estarei aqui para ver você vencendo todos eles. E a claro seu estilo aventureira que combina com o meu</strong>
                 </p>
-                <p class="final-love-message">Agora chega de telas, vem me dar um abraço!<br>- Com todo o amor do mundo, [SEU NOME AQUI]</p>
+                <p class="final-love-message">Agora chega de telas!<br>- Com todo o amor do mundo, do seu Príncipe</p>
             </div>
         </div>
 
@@ -103,6 +105,8 @@
             <p id="modal-message"></p>
         </div>
     </div>
+
+     <audio id="background-music" loop src="musica.mp3"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>

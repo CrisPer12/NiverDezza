@@ -52,12 +52,30 @@ const prizeAmount = document.getElementById('prize-amount');
 const progressBar = document.getElementById('progress-bar');
 const questionText = document.getElementById('question-text');
 const answersContainer = document.getElementById('answers-container');
+const backgroundMusic = document.getElementById('background-music');
+const musicToggle = document.getElementById('music-toggle');
+
+// --- LÓGICA DA MÚSICA ---
+musicToggle.addEventListener('click', () => {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicToggle.textContent = '🔊';
+        musicToggle.classList.add('playing');
+    } else {
+        backgroundMusic.pause();
+        musicToggle.textContent = '🔇';
+        musicToggle.classList.remove('playing');
+    }
+});
 
 
 // Inicia o Jogo
 function startGame() {
     startScreen.classList.add('hidden');
     questionScreen.classList.remove('hidden');
+    backgroundMusic.play().catch(() => {});
+    musicToggle.textContent = '🔊';
+    musicToggle.classList.add('playing');
     displayQuestion();
 }
 

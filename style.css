@@ -264,3 +264,28 @@ button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0,
 .modal-content.incorrect-feedback #modal-title {
     color: var(--danger-color);
 }
+
+/* --- ESTILOS DO BOTÃO DE MÚSICA --- */
+.music-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+.music-button.playing {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
